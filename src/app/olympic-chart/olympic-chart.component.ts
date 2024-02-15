@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { OlympicService } from "src/app/core/services/olympic.service";
 import { Observable, of } from "rxjs";
@@ -14,7 +14,7 @@ export class OlympicChartComponent {
     public olympics: Observable<country[]> = of([]);
     public data = Array();
 
-    gradient: boolean = true;
+    gradient: boolean = false;
     showLegend: boolean = false;
     showLabels: boolean = true;
     isDoughnut: boolean = false;
@@ -31,7 +31,7 @@ export class OlympicChartComponent {
 
     constructor(
         private olympicService: OlympicService,
-        private router: Router,
+        private router: Router
     ) {
         this.olympics = this.olympicService.getOlympics();
     }

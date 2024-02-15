@@ -7,5 +7,8 @@
         </svg>
         Go back</a
     >
-    <h1>NameCountry in detail</h1>
+    <ng-container *ngIf="country">
+        <h1>{{ country?.country }}</h1>
+        <!-- Other content related to country -->
+    </ng-container>
 </div>

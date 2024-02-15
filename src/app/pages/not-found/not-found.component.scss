@@ -1,8 +1,58 @@
-.center {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.error {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #39818d;
+}
+
+.error > h1 {
+    color: white;
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error > a {
+    color: white;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+.error > a:hover {
+    color: #39818d;
+}
+
+.error > a {
+    font-size: 2rem;
+    display: flex;
+    width: fit-content;
+    margin-left: 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    transition: all 0.15s ease-in-out;
+}
+
+.error > a:hover {
+    color: #000;
+}
+
+.error > a > svg {
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    margin-right: 10px;
+    transition: all 0.15s ease-in-out;
+}
+
+.error > a:hover > svg {
+    fill: #000;
 }

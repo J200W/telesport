@@ -19,3 +19,24 @@ body {
     background-color: #f6f6f6;
     text-decoration: none;
 }
+
+.ngx-charts {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 30px;
+}
+
+text.ng-star-inserted {
+    font-size: 1rem !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .pie-label {
+        font-size: 1.3rem !important;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .pie-label {
+        font-size: 1rem !important;
+    }
+}

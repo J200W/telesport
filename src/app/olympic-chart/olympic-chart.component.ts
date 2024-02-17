@@ -13,6 +13,7 @@ import { Color, ScaleType } from "@swimlane/ngx-charts";
 export class OlympicChartComponent {
     public olympics: Observable<country[]> = of([]);
     public data = Array();
+    public view: [number, number] = [NaN, NaN];
 
     gradient: boolean = false;
     showLegend: boolean = false;

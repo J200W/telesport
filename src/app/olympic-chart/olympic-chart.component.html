@@ -1,8 +1,8 @@
-<div class="chart-container">
+<div class="chart-container" #containerRef>
     <ngx-charts-pie-chart
         [results]="data"
         [labels]="showLabels"
-        [view]="[600, 600]"
+        [view]="[containerRef.offsetWidth, containerRef.offsetHeight]"
         [scheme]="colorScheme"
         [legend]="showLegend"
         [doughnut]="isDoughnut"

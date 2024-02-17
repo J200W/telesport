@@ -10,7 +10,7 @@ Avant de commencer, assurez-vous d'avoir complété ces étapes :
 
 - Installez la ligne de commande d'Angular. Pour savoir si elle est installée, entrez la commande suivante pour connaître la version d'Angular : ```ng version```.
 - Créez un clone de ce projet ou téléchargez-le sous format .zip.
-- Une fois téléchargé, allez dans le terminal du répertoire source, puis installez les modules de Node avec cette commande : ```npm install```.
+- Une fois téléchargé et depuis la branche ```main```, allez dans le terminal du répertoire source, puis installez les modules de Node avec cette commande : ```npm install```.
 - Exécuter le site en local en entrant la commande suivante : ```ng serve```.
 
 Vous pouvez désormais découvrir le nouveau tableau de bord des Jeux Olympiques.

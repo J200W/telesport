@@ -7,5 +7,23 @@
         </svg>
         Go back</a
     >
-    <h1>NameCountry in detail</h1>
+    <ng-container *ngIf="getCountry().country">
+        <h1 class="country-name">{{ getCountry().country }}</h1>
+        <!-- Other content related to country -->
+        <div class="country-infos">
+            <div class="country-box">
+                <h2>Number of participations</h2>
+                <p>{{ getData().numberOfParticipations }}</p>
+            </div>
+            <div class="country-box">
+                <h2>Total number of medals</h2>
+                <p>{{ getData().numberOfMedals }}</p>
+            </div>
+            <div class="country-box">
+                <h2>Total number of athletes</h2>
+                <p>{{ getData().numberOfAthletes }}</p>
+            </div>
+        </div>
+    </ng-container>
+    <app-olympic-chart-detail></app-olympic-chart-detail>
 </div>

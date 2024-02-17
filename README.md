@@ -1,29 +1,17 @@
-# OlympicGamesStarter
+# Projet Tableau de Bord des Jeux Olympiques
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+Bienvenue dans le projet de développement du tableau de bord des Jeux Olympiques en collaboration avec TéléSport. Ce tableau de bord interactif accompagnera les reportages sur les prochains Jeux Olympiques en fournissant aux utilisateurs des informations visuelles sur les performances des pays participants.
 
-Don't forget to install your node_modules before starting (`npm install`).
+# Objectif
+Le but de cette application est de permettre aux utilisateurs de visualiser des informations clés des précédents Jeux Olympiques, telles que le nombre de médailles par pays, les disciplines les plus performantes, etc. Dans le cadre de ce projet, votre responsabilité sera de développer le front-end du tableau de bord, en suivant les bonnes pratiques d'Angular.
 
-## Development server
+# Prérequis
+Avant de commencer, assurez-vous d'avoir complété ces étapes :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Installez la ligne de commande d'Angular. Pour savoir si elle est installée, entrez la commande suivante pour connaître la version d'Angular : ```ng version```.
+- Créez un clone de ce projet ou téléchargez-le sous format .zip.
+- Une fois téléchargé, allez dans le terminal du répertoire source, puis installez les modules de Node avec cette commande : ```npm install```.
+- Exécuter le site en local en entrant la commande suivante : ```ng serve```.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Where to start
-
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
-
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
-
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
-
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
-
-You're now ready to implement the requested features.
-
-Good luck!
+Vous pouvez désormais découvrir le nouveau tableau de bord des Jeux Olympiques.
+Enjoy!

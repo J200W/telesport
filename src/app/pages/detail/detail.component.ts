@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { OlympicService } from "src/app/core/services/olympic.service";
 import country from "src/app/core/models/Olympic";
+import response from "src/app/core/models/Response";
 import dataCountry from "src/app/core/models/DataCountry";
 
 @Component({
@@ -12,7 +13,10 @@ import dataCountry from "src/app/core/models/DataCountry";
 
 
 export class DetailComponent implements OnInit {
-    public olympics: Observable<country[]> = of([]);
+    public olympics: Observable<response> = of({
+        status: "",
+        data: [],
+    });
     private id: number = 0;
     private country: country = {
         id: 0,
@@ -57,7 +61,7 @@ export class DetailComponent implements OnInit {
         this.olympics = this.olympicService.getOlympics();
         this.id = parseInt(window.location.pathname.split("/").pop() || "0");
         this.olympics.subscribe((data) => {
-            this.country = data.find((c) => c.id === this.id) || {
+            this.country = data.data.find((c) => c.id === this.id) || {
                 id: 0,
                 country: "",
                 participations: [],

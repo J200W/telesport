@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { OlympicService } from "src/app/core/services/olympic.service";
 import { Observable, of } from "rxjs";
 import country from "../core/models/Olympic";
+import response from "../core/models/Response";
 import { Color, ScaleType } from "@swimlane/ngx-charts";
 
 @Component({
@@ -11,7 +12,10 @@ import { Color, ScaleType } from "@swimlane/ngx-charts";
     styleUrls: ["./olympic-chart.component.scss"],
 })
 export class OlympicChartComponent {
-    public olympics: Observable<country[]> = of([]);
+    public olympics: Observable<response> = of({
+        status: "",
+        data: [],
+    });
     public data = Array();
     public view: [number, number] = [NaN, NaN];
 
@@ -40,7 +44,11 @@ export class OlympicChartComponent {
     ngOnInit(): void {
         this.olympics = this.olympicService.getOlympics();
         this.olympics.subscribe((data) => {
-            this.data = this.format_country(data);
+            if (data.status === "error") {
+                this.router.navigate(["/error"]);
+                return;
+            }
+            this.data = this.format_country(data.data);
         });
     }
 
@@ -64,13 +72,5 @@ export class OlympicChartComponent {
 
     onSelect(data: any): void {
         this.router.navigate(["/detail", data.extra.id]);
-    }
-
-    onActivate(data: Array<country>): void {
-        // console.log("Activate", JSON.parse(JSON.stringify(data)));
-    }
-
-    onDeactivate(data: Array<country>): void {
-        // console.log("Deactivate", JSON.parse(JSON.stringify(data)));
     }
 }

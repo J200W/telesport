@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { Observable, of } from "rxjs";
 import country from "../core/models/Olympic";
+import response from "../core/models/Response";
 import serie from "../core/models/Serie";
 import { Color, ScaleType } from "@swimlane/ngx-charts";
 import { OlympicService } from "../core/services/olympic.service";
@@ -17,7 +19,10 @@ export class OlympicChartDetailComponent {
         participations: [],
     };
 
-    public olympics: Observable<country[]> = of([]);
+    public olympics: Observable<response> = of({
+        status: "",
+        data: [],
+    });
     public serie: Array<serie> = [
         {
             name: "Country",
@@ -44,21 +49,34 @@ export class OlympicChartDetailComponent {
         name: "Customer Usage",
     };
 
-    constructor(private olympicService: OlympicService) {}
+    constructor(
+        private olympicService: OlympicService,
+        private router: Router
+    ) {}
 
     ngOnInit(): void {
         const id = parseInt(window.location.pathname.split("/").pop() || "0");
+        if (Number.isNaN(id) || id === 0) {
+            this.router.navigate(["/error"]);
+            return;
+        }
         this.olympics = this.olympicService.getOlympics();
         this.olympics.subscribe((data) => {
-            console.log("countries: ", data);
-            this.country = data.find((c) => c.id === id) || {
+            if (data.status === "error") {
+                this.router.navigate(["/error"]);
+                return;
+            }
+            this.country = data.data.find((c) => c.id === id) || {
                 id: 0,
                 country: "",
                 participations: [],
             };
-            console.log("this.country: ", this.country);
+            console.log("Country: ", this.country);
+            if (this.country.id === 0) {
+                this.router.navigate(["/error"]);
+                return;
+            }
             this.serie = this.format_serie(this.country);
-            console.log("this.serie: ", this.serie);
         });
     }
 

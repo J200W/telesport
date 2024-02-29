@@ -8,6 +8,7 @@ import country from "../models/Olympic";
 @Injectable({
     providedIn: "root",
 })
+
 export class OlympicService {
     private olympicJSON = "./assets/mock/olympic.json";
 
@@ -30,12 +31,9 @@ export class OlympicService {
                     data: value,
                 }
                 this.olympics$.next(this.olympicsRes) ;
-                // console.log("Olympic service value: ", value);
             }),
             catchError((error, caught) => {
-                // TODO: improve error handling
                 console.error(error);
-                // can be useful to end loading state and let the user know something went wrong
                 this.olympicsRes = {
                     status: "error",
                     data: [],

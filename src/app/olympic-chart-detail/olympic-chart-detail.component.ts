@@ -30,7 +30,6 @@ export class OlympicChartDetailComponent {
         },
     ];
 
-    // options
     showLegend: boolean = false;
     showLabels: boolean = true;
     animations: boolean = true;
@@ -78,12 +77,6 @@ export class OlympicChartDetailComponent {
             }
             this.serie = this.format_serie(this.country);
         });
-    }
-
-    private calc_total_medals(country: country) {
-        return country.participations.reduce((acc, p) => {
-            return acc + p.medalsCount;
-        }, 0);
     }
 
     private format_serie(country: country) {

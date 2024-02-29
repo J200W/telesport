@@ -11,6 +11,7 @@ import { Color, ScaleType } from "@swimlane/ngx-charts";
     templateUrl: "./olympic-chart.component.html",
     styleUrls: ["./olympic-chart.component.scss"],
 })
+
 export class OlympicChartComponent {
     public olympics: Observable<response> = of({
         status: "",
@@ -50,6 +51,14 @@ export class OlympicChartComponent {
             }
             this.data = this.format_country(data.data);
         });
+    }
+
+    ngOnDestroy() {
+        this.olympics = of({
+            status: "",
+            data: [],
+        });
+        
     }
 
     private calc_total_medals(country: country) {

@@ -11,6 +11,29 @@ import { OlympicChartComponent } from "./olympic-chart/olympic-chart.component";
 import { OlympicChartDetailComponent } from "./olympic-chart-detail/olympic-chart-detail.component";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 
+/**
+ * Module racine de l'application.
+ * 
+ * @remarks
+ * Ce module est chargé lors du démarrage de l'application et est utilisé pour déclarer les composants principaux.
+ * 
+ * @beta
+ * 
+ * @see AppModule
+ * @see AppComponent
+ * @see HomeComponent
+ * @see NotFoundComponent
+ * @see DetailComponent
+ * @see OlympicChartComponent
+ * @see OlympicChartDetailComponent
+ * @see AppRoutingModule
+ * @see HttpClientModule
+ * @see NgxChartsModule
+ * @see BrowserModule
+ * @see BrowserAnimationsModule
+ * @see NgModule
+ * 
+ */
 @NgModule({
     declarations: [
         AppComponent,

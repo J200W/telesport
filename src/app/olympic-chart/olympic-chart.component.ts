@@ -8,12 +8,11 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 
 /**
  * Composant représentant un graphique olympique.
- *
+ * Ce composant récupère les données du service olympique.
+ * Il gère également la navigation vers une vue détaillée pour un pays sélectionné.
  * @example
  * <app-olympic-chart></app-olympic-chart>
  * 
- * Ce composant récupère les données du service olympique.
- * Il gère également la navigation vers une vue détaillée pour un pays sélectionné.
  *
  */
 
@@ -149,6 +148,9 @@ export class OlympicChartComponent {
         this.olympics = this.olympicService.getOlympics();
         this.olympicsSubscription = this.olympics.subscribe((data) => {
             this.data = this.format_country(data.data);
+            if (this.data.length < 1) {
+                this.olympicsSubscription.unsubscribe();
+            }
         });
     }
 

@@ -19,7 +19,6 @@ import country from "../models/Olympic";
  * }
  * ```
  *
- * @beta
  */
 @Injectable({
     providedIn: 'root',

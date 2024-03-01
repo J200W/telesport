@@ -43,9 +43,10 @@ export class OlympicChartDetailComponent {
      * La réponse est de type 'response' et inclut des informations sur le statut et les données.
      *
      * @defaultValue
-     * Observable d'une réponse vide : { statut: '', données: [] }.
+     * Observable d'une réponse vide : 
+     * ```{ statut: '', données: [] }```
      */
-    public olympics: Observable<response> = of({
+    public olympicsObs: Observable<response> = of({
         status: '',
         data: [],
     });
@@ -54,12 +55,12 @@ export class OlympicChartDetailComponent {
      * Tableau contenant la série de données pour le graphique.
      *
      * @defaultValue
-     * [
-     *   {
+     *```
+     * [{
      *     name: 'Country',
      *     series: [],
-     *   },
-     * ]
+     * }, {...}]
+     * ```
      */
     public serie: Array<serie> = [
         {
@@ -193,13 +194,16 @@ export class OlympicChartDetailComponent {
      * Vérifie les erreurs dans la réponse et navigue vers la page d'erreur si nécessaire.
      */
     ngOnInit(): void {
+        // Récupère l'ID du pays à partir de l'URL
         const id = parseInt(window.location.pathname.split('/').pop() || '0');
         if (Number.isNaN(id) || id === 0) {
             this.router.navigate(['/error']);
             return;
         }
-        this.olympics = this.olympicService.getOlympics();
-        this.olympicsSubscription = this.olympics.subscribe((data) => {
+
+        // Récupère les données du service olympique
+        this.olympicsObs = this.olympicService.getOlympics();
+        this.olympicsSubscription = this.olympicsObs.subscribe((data) => {
             if (data.status === 'error') {
                 this.router.navigate(['/error']);
                 this.olympicsSubscription.unsubscribe();
@@ -210,12 +214,13 @@ export class OlympicChartDetailComponent {
                 country: '',
                 participations: [],
             };
-            console.log('Country: ', this.country);
             if (this.country.id === 0) {
                 this.router.navigate(['/error']);
                 this.olympicsSubscription.unsubscribe();
                 return;
             }
+
+            // Formate la série de données pour le graphique
             this.serie = this.format_serie(this.country);
         });
     }
@@ -223,8 +228,8 @@ export class OlympicChartDetailComponent {
     /**
      * Formate les données du pays en une série de données pour le graphique.
      *
-     * @param country - Les données du pays à formater.
-     * @returns La série de données formatée pour le graphique.
+     * @param country - Les données du pays à formater. ``` { id: number, country: string, participations: Array<participation> } ```
+     * @returns La série de données formatée pour le graphique. ``` [{ name: string, series: Array<{ name: string, value: number }> }] ```
      * @private
      */
     private format_serie(country: country) {

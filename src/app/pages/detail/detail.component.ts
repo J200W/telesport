@@ -32,9 +32,9 @@ export class DetailComponent implements OnInit {
      * La réponse est de type 'response' et inclut des informations sur le statut et les données.
      *
      * @defaultValue
-     * Observable d'une réponse vide : { statut: '', données: [] }.
+     * Observable d'une réponse vide : ```{ statut: '', données: [] }```.
      */
-    public olympics: Observable<response> = of({
+    public olympicsObs: Observable<response> = of({
         status: '',
         data: [],
     });
@@ -52,7 +52,7 @@ export class DetailComponent implements OnInit {
      * Objet représentant les informations du pays actuel.
      *
      * @defaultValue
-     * { id: 0, country: "", participations: [] }
+     * ```{ id: 0, country: "", participations: [] }```
      * @private
      */
     private country: country = {
@@ -65,7 +65,7 @@ export class DetailComponent implements OnInit {
      * Objet représentant les données du pays actuel, y compris le nombre de participations, de médailles et d'athlètes.
      *
      * @defaultValue
-     * { numberOfParticipations: 0, numberOfMedals: 0, numberOfAthletes: 0 }
+     * ```{ numberOfParticipations: 0, numberOfMedals: 0, numberOfAthletes: 0 }```
      * @private
      */
     private data: dataCountry = {
@@ -144,9 +144,13 @@ export class DetailComponent implements OnInit {
      * Vérifie les erreurs dans la réponse et navigue vers la page d'erreur si nécessaire.
      */
     ngOnInit(): void {
-        this.olympics = this.olympicService.getOlympics();
+        // Récupère les données du service olympique
+        this.olympicsObs = this.olympicService.getOlympics();
+
+        // Récupère l'ID du pays à partir de l'URL
         this.id = parseInt(window.location.pathname.split('/').pop() || '0');
-        this.olympicsSubscription = this.olympics.subscribe((data) => {
+
+        this.olympicsSubscription = this.olympicsObs.subscribe((data) => {
             this.country = data.data.find((c) => c.id === this.id) || {
                 id: 0,
                 country: '',
@@ -158,6 +162,8 @@ export class DetailComponent implements OnInit {
                 this.olympicsSubscription.unsubscribe();
                 return;
             }
+
+            // Formate les données du pays
             this.data = this.formatData();
         });
     }

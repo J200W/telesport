@@ -11,7 +11,6 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
  * Les composants utilisés sont `HomeComponent`, `DetailComponent` et `NotFoundComponent`.
  *
  * @example
- * // Exemple d'utilisation dans un fichier de configuration d'application Angular :
  * ```typescript
  * import { AppRoutingModule } from './app-routing.module';
  *
@@ -28,19 +27,19 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
  */
 const routes: Routes = [
     {
-        path: '',
+        path: '', // home route
         component: HomeComponent,
     },
     {
-        path: 'detail/:id',
+        path: 'detail/:id', // detail route avec paramètre d'identifiant
         component: DetailComponent,
     },
     {
-        path: '**',
+        path: '**', // wildcard route pour 404 page
         component: NotFoundComponent,
     },
     {
-        path: 'error',
+        path: 'error', // wildcard route pour 404 page
         component: NotFoundComponent,
     },
 ];

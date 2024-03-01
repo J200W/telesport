@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
  * @example
  * <app-not-found></app-not-found>
  *
- * @beta
  */
 @Component({
     selector: 'app-not-found',
@@ -28,7 +27,5 @@ export class NotFoundComponent implements OnInit {
      * Ce crochet de cycle de vie est généralement utilisé pour effectuer des initialisations après la création du composant.
      * Dans ce cas, il n'y a pas d'initialisation spécifique définie.
      */
-    ngOnInit(): void {
-        // Aucune initialisation spécifique définie ici.
-    }
+    ngOnInit(): void {}
 }

@@ -1,13 +1,13 @@
 /**
  * Interface représentant une série de données.
  *
- * Cette interface définit la structure des données pour une série, comprenant un nom et un tableau d'éléments de série.
+ * Cette interface définit la structure des données pour une série dans le graphique détaillé d'un pays.
  * Chaque élément de série est représenté par un objet contenant un nom et une valeur.
  *
  * @example
  * ```
  * const serieData: serie = {
- *   name: 'Country',
+ *   name: 'CountryName',
  *   series: [
  *     { name: '2020', value: 10 },
  *     { name: '2016', value: 15 },

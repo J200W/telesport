@@ -1,3 +1,5 @@
+import participation from './Participation';
+
 /**
  * Interface représentant un pays aux Jeux olympiques.
  *
@@ -15,9 +17,7 @@
  *   ],
  * };
  * ```
-
  */
-import participation from './Participation';
 
 export default interface country {
     /**

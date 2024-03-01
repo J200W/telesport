@@ -31,7 +31,7 @@ export class OlympicChartComponent {
      * @defaultValue
      * Observable d'une réponse vide : { statut: '', données: [] }.
      */
-    public olympics: Observable<response> = of({
+    public olympicsObs: Observable<response> = of({
         status: '',
         data: [],
     });
@@ -138,15 +138,15 @@ export class OlympicChartComponent {
     /**
      * Crée une instance de OlympicChartComponent.
      *
-     * @param olympicService - Le service utilisé pour récupérer les données olympiques.
-     * @param router - Le routeur Angular pour la navigation.
+     * @param olympicService - Le service utilisé pour récupérer les données olympiques. @see OlympicService
+     * @param router - Le routeur Angular pour la navigation. @see Router
      */
     constructor(
         private olympicService: OlympicService,
         private router: Router
     ) {
-        this.olympics = this.olympicService.getOlympics();
-        this.olympicsSubscription = this.olympics.subscribe((data) => {
+        this.olympicsObs = this.olympicService.getOlympics();
+        this.olympicsSubscription = this.olympicsObs.subscribe((data) => {
             this.data = this.format_country(data.data);
             if (this.data.length < 1) {
                 this.olympicsSubscription.unsubscribe();
@@ -157,8 +157,8 @@ export class OlympicChartComponent {
     /**
      * Calcule le nombre total de médailles pour un pays donné.
      *
-     * @param country - Le pays pour lequel calculer le nombre total de médailles.
-     * @returns Le nombre total de médailles pour le pays.
+     * @param country - Le pays pour lequel calculer le nombre total de médailles. ``` { id: number, country: string, participations: Array<participation> } ```
+     * @returns Le nombre total de médailles pour le pays. ``` number ```
      * @private
      */
     private calc_total_medals(country: country) {
@@ -170,9 +170,9 @@ export class OlympicChartComponent {
     /**
      * Formate les données des pays pour le graphique.
      *
-     * @param countries - Les pays à formater.
-     * @returns Un tableau de données formatées pour le graphique.
-     * @private
+     * @param countries - Les pays à formater. ``` { id: number, country: string, participations: Array<participation> } ```
+     * @returns Un tableau de données formatées pour le graphique. ``` { extra: { id: number }, name: string, value: number } ```
+     * @private 
      */
     private format_country(countries: Array<country>) {
         return countries.map((c) => {

@@ -1,3 +1,5 @@
+import country from './Olympic';
+
 /**
  * Interface représentant la réponse des données olympiques.
  *
@@ -16,7 +18,6 @@
  * ```
  * 
  */
-import country from './Olympic';
 
 export default interface response {
     /**

@@ -25,6 +25,9 @@ import { OlympicService } from "./core/services/olympic.service";
   
     /**
      * Initialise le composant après que Angular a initialisé les données liées au composant.
+     * 
+     * @remarks
+     * ```pipe(take(1))``` permet de se désabonner automatiquement après la première émission.
      */
     ngOnInit(): void {
       this.olympicService.loadInitialData().pipe(take(1)).subscribe();
